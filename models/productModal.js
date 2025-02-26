@@ -1,28 +1,34 @@
-import e from "express";
 import mongoose from "mongoose";
-const{model, Schema}=mongoose;
-const productSchema=new Schema(
+const { model, Schema } = mongoose;
+
+const productSchema = new Schema(
     {
-        productName: {
+        name: {
             type: String,
             required: true
         },
-        productPrice: {
+        price: {
             type: Number,
             required: true
         },
-        productCategory: {
+        category: {
             type: String,
             required: true
         },
-        productDiscount: {
+        discount: {
             type: Number,
-            required: true
-    },
+            default: 0
+        },
+        image: {
+            type: String,
+            default: ""
+        }
     },
     {
-     timestamps: true   
+        timestamps: true,
+        collection: "product"  // Moved to the correct place
     }
-)
-const Product=model("Product", productSchema);
+);
+
+const Product = model("Product", productSchema);
 export default Product;

@@ -1,30 +1,25 @@
-
 import mongoose from "mongoose";
 const{model, Schema}=mongoose;
-const contactSchema=new Schema(
+const userSchema=new Schema(
     {
-        names: {
+        userName: {
             type: String,
             required: true
         },
-        email: {
+        userEmail: {
             type: String,
             required: true
         },
-        subject: {
+        userPassword: {
             type: String,
             required: true
         },
-        message: {
+        userRole: {
             type: String,
-            required: true
-    },
-    phone: {type: String, 
-        required: false}
+            default: "user"
+        }
     },
     {
      timestamps: true   
     }
 )
-const Contact=model("Contact", contactSchema);
-export default Contact;
