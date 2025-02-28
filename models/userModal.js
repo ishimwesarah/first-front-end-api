@@ -16,10 +16,14 @@ const userSchema=new Schema(
         },
         userRole: {
             type: String,
-            default: "user"
+            default: "user",
+            enum:["user", "admin"],
+            required: true
         }
     },
     {
      timestamps: true   
     }
 )
+const User=model("users", userSchema);
+export default User;
